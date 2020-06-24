@@ -1,3 +1,20 @@
 .App {
   text-align: center;
 }
+
+/* .App button{
+  padding: 20px 40px;
+  border: none;
+  border-radius: 10px;
+  color: rgb(253, 25, 0);
+  flex: 40px;
+  background-color: pink;
+  border: 1px solid rgb(180, 156, 156);
+  box-shadow: 1px solid rgb(100, 79, 79);
+}
+
+ .App button:hover{
+  border-radius: 45%;
+  background-color: brown;
+  color: #ccc;
+} */ 
