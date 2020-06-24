@@ -1,0 +1,1 @@
+for trying this repo clone it and run npm install and npm start in the root folder.
