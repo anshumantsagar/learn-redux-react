@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { increment, decrement, add, sub, storeResult, deleteResult } from '../../store/actions/actionTypes';
+// we can offcourse call it like import * as actionCreators from '../../store/actions/actions';
 
 import CounterControl from '../../components/CounterControl/CounterControl';
 import CounterOutput from '../../components/CounterOutput/CounterOutput';
-import * as actionTypes from '../../store/action';
 
 class Counter extends Component {
     render () {
@@ -15,7 +16,7 @@ class Counter extends Component {
                 <CounterControl label="Add 10" clicked={this.props.onAddCounter}  />
                 <CounterControl label="Subtract 10" clicked={this.props.onSubCounter}  />
                 <hr/>
-                <button onClick={() => this.props.storeResult(this.props.ctr)}>Store Result</button>
+                <button style={{color:'White', background:'Darkorange', border:'none', padding:'10px', borderRadius:'100px'}} onClick={() => this.props.storeResult(this.props.ctr)}>Store Result</button>
                 <ul>
                     {this.props.storedResult.map(li => (
                         <li key={li.id} onClick={() => this.props.onDeleteResult(li.id)}>{li.value}</li>))}
@@ -36,12 +37,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIncrementCounter: () => dispatch({type: actionTypes.INCREMENT}),
-        onDecrementCounter: () => dispatch({type: actionTypes.DECREMENT}),
-        onAddCounter: () => dispatch({type: actionTypes.ADD, val:10}),
-        onSubCounter: () => dispatch({type: actionTypes.SUB, val:10}),
-        storeResult: (result) => dispatch({type: actionTypes.STORE_RESULT, result: result}),
-        onDeleteResult: (id) => dispatch({type: actionTypes.DELETE_RESULT, resultElId:id})
+        onIncrementCounter: () => dispatch(increment()),
+        onDecrementCounter: () => dispatch(decrement()),
+        onAddCounter: () => dispatch(add(10)),
+        onSubCounter: () => dispatch(sub(10)),
+        storeResult: (result) => dispatch(storeResult(result)),
+        onDeleteResult: (id) => dispatch(deleteResult(id))
     }
 }
 
